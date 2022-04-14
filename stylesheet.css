@@ -1,0 +1,623 @@
+/* ↓全共通 */
+html, body,
+ul, ol, li,
+h1, h2, h3, h4, h5, h6, p,
+form, input, div {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+.mobile-ver {
+    display: none;
+}
+
+h2 {
+  color: #4e4e4e;
+}
+/* 全共通 */
+
+/* ↓ヘッダー */
+header {
+  height: 78px;
+  width: 50%;
+  background-color: #FFD803;
+  opacity: 1;
+  position :fixed;
+  top: 0;
+  left: 50%;
+  z-index: 100;
+}
+
+.header-right {
+  float: right;
+
+}
+  
+.header-right a {
+  height: 71px;
+  line-height: 65px;
+  font-size: 23px;
+  padding: 7px 25px 0px 25px;
+  color: white;
+  text-decoration: none;
+  display: block;
+  float: left;
+  transition: all 0.5s;
+}
+
+.header-right a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/*========= ボタンのためのCSS ===============*/
+.openbtn{
+	position:fixed;
+  z-index: 9999;/*ボタンを最前面に*/
+	top:20px;
+	right: 20px;
+	cursor: pointer;
+  width: 50px;
+  height:50px;
+  display: none;
+}
+	
+/*×に変化*/	
+.openbtn span{
+  display: inline-block;
+  transition: all .4s;
+  position: absolute;
+  left: 14px;
+  height: 3px;
+  border-radius: 2px;
+	background-color: 	rgb(255, 255, 255);
+  width: 45%;
+  }
+
+.openbtn span:nth-of-type(1) {
+	top:15px;	
+}
+
+.openbtn span:nth-of-type(2) {
+	top:23px;
+}
+
+.openbtn span:nth-of-type(3) {
+	top:31px;
+}
+
+.openbtn.active span:nth-of-type(1) {
+  top: 18px;
+  left: 18px;
+  transform: translateY(6px) rotate(-45deg);
+  width: 30%;
+}
+
+.openbtn.active span:nth-of-type(2) {
+	opacity: 0;
+}
+
+.openbtn.active span:nth-of-type(3){
+  top: 30px;
+  left: 18px;
+  transform: translateY(-6px) rotate(45deg);
+  width: 30%;
+}
+
+/*========= ナビゲーションのためのCSS ===============*/
+
+#g-nav{
+  /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+  position:fixed;
+  z-index: 999;
+  /*ナビのスタート位置と形状*/
+  top:0;
+  right: -120%;
+  width:100%;
+  height: 100vh;/*ナビの高さ*/
+  background:#abe0de;
+  /*動き*/
+  transition: all 0.6s;
+}
+
+/*アクティブクラスがついたら位置を0に*/
+#g-nav.panelactive{
+  right: 0;
+}
+
+/*ナビゲーションの縦スクロール*/
+#g-nav.panelactive #g-nav-list{
+  /*ナビの数が増えた場合縦スクロール*/
+  position: fixed;
+  z-index: 999; 
+  width: 100%;
+  height: 100vh;/*表示する高さ*/
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/*ナビゲーション*/
+#g-nav ul {
+  /*ナビゲーション天地中央揃え*/
+  position: absolute;
+  z-index: 999;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+/*リストのレイアウト設定*/
+
+#g-nav li{
+  list-style: none;
+  text-align: center;
+}
+
+#g-nav li a{
+color: rgb(255, 255, 255);
+text-decoration: none;
+padding:10px;
+display: block;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+font-weight: bold;
+}
+
+/* ボディー */
+  /* ロゴビュー */
+.logo-view {
+  height: 100%;
+  width: 50%;
+  background-color: #abe0de;
+  float: right;
+  position: fixed;
+  z-index: 999;
+}
+
+.logo-back {
+  background-color: #FFFFFF;
+  height: 420px;
+  width: 550px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logo-text {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 40%;
+  position: absolute;
+}
+
+.logo {
+  width: 40%;
+  margin-top: 3%;
+  margin-left: 30%;
+}
+
+.gcc-explanation {
+  text-align: center;
+  width: 90%;
+  font-weight: bold;
+  position: absolute;
+  top: 73%;
+  left: 5%;
+}
+
+  /* ファーストビュー */
+.first-view-container {
+  float: right;
+  width: 50%;
+  height: 100vh;
+  position: relative;
+}
+
+.catch-image {
+  height: 100vh;
+  width: 100%;
+  background-image: url(./images/discussion1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  display: inline-block;
+}
+
+.bg-mask {
+  height: 100%;
+  background: rgba(255,255,255,0.3);
+}
+
+.catch-copy-1 {
+  font-size: 8vh;
+  padding-top: 150px;
+  color:#1a1a1a;
+  text-align: center;
+  text-shadow:1.5px 1.5px 0 rgba(255, 255, 255, 0.4), -1.5px -1.5px 0 rgba(255, 255, 255, 0.4),
+  -1.5px 1.5px 0 rgba(255, 255, 255, 0.4), 1.5px -1.5px 0 rgba(255, 255, 255, 0.4),
+   0px 1.5px 0 rgba(255, 255, 255, 0.4),  0 -1.5px 0 rgba(255, 255, 255, 0.4),
+  -1.5px 0 0 rgba(255, 255, 255, 0.4), 1.5px 0 0 rgba(255, 255, 255, 0.4);
+  opacity: 1;
+}
+
+.catch-copy-sub-1 {
+  text-align: center;
+  padding-top: 1em;
+  font-weight: bold;
+  font-size: 27px;
+  color:#1a1a1a;
+  text-shadow:1.5px 1.5px 0 rgba(255, 255, 255, 0.4), -1.5px -1.5px 0 rgba(255, 255, 255, 0.4),
+  -1.5px 1.5px 0 rgba(255, 255, 255, 0.4), 1.5px -1.5px 0 rgba(255, 255, 255, 0.4),
+   0px 1.5px 0 rgba(255, 255, 255, 0.4),  0 -1.5px 0 rgba(255, 255, 255, 0.4),
+  -1.5px 0 0 rgba(255, 255, 255, 0.4), 1.5px 0 0 rgba(255, 255, 255, 0.4);
+}
+
+.meeting {
+  font-size: 40px;
+}
+
+.catch-copy-sub-2 {
+  text-align: center;
+  padding-top: 1em;
+  font-weight: bold;
+  font-size: 30px;
+  color:#1a1a1a;
+  text-shadow:1.5px 1.5px 0 rgba(255, 255, 255, 0.4), -1.5px -1.5px 0 rgba(255, 255, 255, 0.4),
+  -1.5px 1.5px 0 rgba(255, 255, 255, 0.4), 1.5px -1.5px 0 rgba(255, 255, 255, 0.4),
+   0px 1.5px 0 rgba(255, 255, 255, 0.4),  0 -1.5px 0 rgba(255, 255, 255, 0.4),
+  -1.5px 0 0 rgba(255, 255, 255, 0.4), 1.5px 0 0 rgba(255, 255, 255, 0.4);
+}
+
+.cta {
+  font-size: 30px;
+  padding: 10px 28px;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  opacity: 1;
+  border-radius: 4px;
+  background-color: #FFD803;
+  margin-top: 20px;
+  margin-left: 40%;
+}
+  /* ボディーコピー */
+.first-view-space {
+  height: 100vh;
+  width: 100vh;
+}
+
+.body-copy-container {
+  float: right;
+  width: 50%;
+  padding-left: 50%;
+  position: relative;
+}
+    /* タイトル */
+h2 {
+  font-size: 30px;
+  margin: 80px 0px 80px 80px;
+  padding: 0.25rem 1rem;
+  border-left: 7px solid #FFD803;
+  border-bottom: 3px solid #FFD803;
+}
+    /* メッセージ */
+
+.message{
+  background-color: #E3F6F5;
+  padding-bottom: 70px;
+}
+
+.message h1{
+  color: #4e4e4e;
+  padding-top: 50px;
+  padding-left: 90px;
+  font-size: 50px;
+}
+
+.message p{
+  color: #4e4e4e;
+  padding-top: 50px;
+  padding-left: 90px;
+  padding-right: 90px;
+  font-size: 30px;
+  letter-spacing: 0.02em;
+  line-height: 1.5em;
+}
+
+    /* メリット */
+.merit {
+  margin: 0 auto;
+}
+
+.merit-space {
+  height: 80px;
+  width: 100%;
+}
+
+.merit h2{
+  margin-top: 0;
+}
+
+.merit-background {
+  width: 80%;
+  background-color: #E3F6F5;
+  border-radius: 4px;
+  display: inline-block;
+  margin-left: 10%;
+  margin-bottom: 80px;
+}
+
+.merit-content {
+  width: 80%;
+  background-color: #2D334A;
+  border-radius: 4px;
+  margin: 70px auto;
+}
+
+.merit-content h3{
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  font-size: 1.5em;
+  color: #FFFFFF;
+}
+
+.merit-content p{
+  padding: 2em 2em;
+  color: #FFFFFF;
+}
+
+    /* メンバー */
+.menber {
+  background-color: #E3F6F5;
+  padding-bottom: 10%;
+}
+
+.menber-space {
+  height: 80px;
+  width: 100%;
+}
+
+.menber h2 {
+  margin-top: 0;
+}
+
+.menber-background {
+  width: 50%;
+  background-color: #2D334A;
+  color: #FFFFFF;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.menber-img {
+  position: relative;
+  width: 80%;
+  display: inline-block;
+  margin: 10% 10%;
+  margin-bottom: 0;
+  border-radius: 10px;
+}
+
+
+.menber p {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.name-jp {
+  font-size: 40px;
+  margin: 18px 0; 
+}
+
+.name-rm {
+  margin-bottom: 30px;
+}
+
+.menber-explanation {
+  font-size: 24px;
+}
+
+.menber-comment {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 37px;
+}
+
+.menber-comment-content {
+  font-size: 24px;
+  padding-bottom: 8%;
+}
+
+    /* イベントの詳細 */
+.detail-space {
+  height: 80px;
+  width: 100%;
+}
+    
+.detail h2{
+  margin-top: 0;
+}
+
+table {
+  margin: 0 auto;
+  margin-bottom: 80px;
+  width: 80%;
+  border-collapse: collapse;
+}
+
+td {
+  color: #4e4e4e;
+  font-size: 22px;
+  border: solid 2px #DDDDDD;
+  padding: 1em 1em;
+}
+
+    /* 参加者の声 */
+
+.feedback {
+  background-color: #E3F6F5;
+  padding-bottom: 80px;
+}
+
+.feedback-space {
+  height: 80px;
+  width: 100%;
+}
+
+.feedback h2 {
+  color: #4e4e4e;
+  margin-top: 0;
+}
+
+.feedback-1 {
+  width: 500px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 15px;
+  background-color: #fffffe;
+}
+
+.satisfaction {
+  color: #4e4e4e;
+  padding-top: 8%;
+  padding-left: 8%;
+  font-size: 35px;
+}
+
+.feedback-comment {
+  color: #4e4e4e;
+  padding-top: 8%;
+  padding-left: 8%;
+  padding-right: 8%;
+  font-size: 20px;
+}
+
+.feedback-name {
+  text-align: right;
+  padding: 10px 8% 40px 8%;
+}
+
+.feedback-2 {
+  width: 500px;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 80px;
+  border-radius: 15px;
+  background-color: #fffffe;
+}
+
+    /* クロージング */
+.closing-background {
+  margin: 80px auto;
+  width: 70%;
+  border-radius: 4px;
+  background-color: #E3F6F5;
+}
+
+.closing-top-message {
+  color: #4e4e4e;
+  margin: 5%;
+  padding-top: 5%;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.closing-sub-message {
+  color: #4e4e4e;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 25px;
+}
+
+.closing-sub-message-2 {
+  padding-bottom: 5%;
+}
+
+    /* お問い合わせ */
+.contact-form {
+  background-color: #E3F6F5;
+  padding-bottom: 80px;
+}
+
+.contact-form-space {
+  height: 80px;
+  width: 100%;
+}
+
+.contact-form h2 {
+  color: #4e4e4e;
+  margin-top: 0;
+}
+
+form {
+  text-align: center;
+}
+
+.contact-form p{
+  color:rgb(126, 126, 126);
+  font-size: 17px;
+  margin-bottom: 10px;
+  padding-right: 30px;
+  text-align: left;
+  padding-left: 13%;
+}
+
+.contact-input {
+  width: 70%;
+  margin-bottom: 30px;
+  padding: 14px;
+  font-size: 14px;
+  border: 1px solid #dee7ec;
+  font-family: 'Noto Sans JP', sans-serif;
+  color:rgb(126, 126, 126);
+}
+
+.contact-input-message {
+  height: 150px;
+}
+
+.contact-explanation {
+  color: #4e4e4e;
+  padding-bottom: 40px;
+}
+
+.contact-btn {
+  width: 73%;
+  height: 60px;
+  background-color: rgb(195, 227, 227);
+  cursor: pointer;
+  border-radius : 4px;
+  border        : 2px solid rgb(195, 227, 227);
+  font-size: 20px;
+  font-family: 'Noto Sans JP', sans-serif;
+  color:rgb(126, 126, 126);
+}
+
+.contact-btn:hover {
+  background-color: rgb(137, 204, 204);
+  color:rgb(114, 114, 114);
+}
+
+/* フッター */
+.footer {
+  height: 70px;
+  width: 100%;
+  background-color: #4e4e4e;
+  position: relative;
+}
+
+.footer p{
+  position: absolute;
+  color: #fffffe;
+  top: 32%;
+  left: 27%;
+}
